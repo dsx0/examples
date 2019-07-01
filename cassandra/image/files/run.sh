@@ -42,6 +42,7 @@ CASSANDRA_AUTO_BOOTSTRAP="${CASSANDRA_AUTO_BOOTSTRAP:-true}"
 CASSANDRA_SEEDS="${CASSANDRA_SEEDS:false}"
 CASSANDRA_SEED_PROVIDER="${CASSANDRA_SEED_PROVIDER:-org.apache.cassandra.locator.SimpleSeedProvider}"
 CASSANDRA_AUTO_BOOTSTRAP="${CASSANDRA_AUTO_BOOTSTRAP:false}"
+CASSANDRA_AUTHENTICATOR="${CASSANDRA_AUTHENTICATOR:-AllowAllAuthenticator}"
 
 # Turn off JMX auth
 CASSANDRA_OPEN_JMX="${CASSANDRA_OPEN_JMX:-false}"
@@ -79,7 +80,7 @@ echo CASSANDRA_RPC_ADDRESS ${CASSANDRA_RPC_ADDRESS}
 echo CASSANDRA_RPC_INTERFACE ${CASSANDRA_RPC_INTERFACE}
 echo CASSANDRA_SEEDS ${CASSANDRA_SEEDS}
 echo CASSANDRA_SEED_PROVIDER ${CASSANDRA_SEED_PROVIDER}
-
+echo CASSANDRA_AUTHENTICATOR ${CASSANDRA_AUTHENTICATOR}
 
 # if DC and RACK are set, use GossipingPropertyFileSnitch
 if [[ $CASSANDRA_DC && $CASSANDRA_RACK ]]; then
@@ -130,6 +131,7 @@ for yaml in \
   gc_warn_threshold_in_ms \
   listen_interface \
   rpc_interface \
+  authenticator \
   ; do
   var="CASSANDRA_${yaml^^}"
   val="${!var}"
