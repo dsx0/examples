@@ -41,6 +41,8 @@ ADD files /
 RUN clean-install bash dos2unix \
     && dos2unix /build.sh \
     && dos2unix /run.sh \
+    && dos2unix /ready-probe.sh \
+    && dos2unix /jvm.options \
     && /build.sh \
     && rm /build.sh
 
