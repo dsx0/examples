@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # build the cassandra image.
-VERSION=v2
+VERSION=v3
 #orig
 #PROJECT_ID?=google_samples
 #PROJECT=gcr.io/${PROJECT_ID}
