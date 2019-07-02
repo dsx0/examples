@@ -13,10 +13,13 @@
 # limitations under the License.
 
 # build the cassandra image.
-VERSION=v14
-PROJECT_ID?=google_samples
-PROJECT=gcr.io/${PROJECT_ID}
-CASSANDRA_VERSION=3.11.2
+VERSION=v1
+#orig
+#PROJECT_ID?=google_samples
+#PROJECT=gcr.io/${PROJECT_ID}
+#mine
+PROJECT=<replace-me-url-to-registry>
+CASSANDRA_VERSION=3.11.4
 
 all: kubernetes-cassandra.jar build
 
@@ -32,15 +35,22 @@ kubernetes-cassandra.jar:
 
 container:
 	@echo "Building ${PROJECT}/cassandra:${VERSION}"
-	docker build --pull --build-arg "CASSANDRA_VERSION=${CASSANDRA_VERSION}" -t ${PROJECT}/cassandra:${VERSION} image
+	docker build --pull --build-arg "CASSANDRA_VERSION=${CASSANDRA_VERSION}" -t ${PROJECT}/dsx0-cassandra:${VERSION} image
 
 container-dev:
-	docker build --pull --build-arg "CASSANDRA_VERSION=${CASSANDRA_VERSION}" --build-arg "DEV_CONTAINER=true" -t ${PROJECT}/cassandra:${VERSION}-dev image
+	docker build --pull --build-arg "CASSANDRA_VERSION=${CASSANDRA_VERSION}" --build-arg "DEV_CONTAINER=true" -t ${PROJECT}/dsx0-cassandra:${VERSION}-dev image
 
-build: container container-dev
+#orig
+#build: container container-dev
+#mine
+build: container
 
-push: build
-	gcloud docker -- push ${PROJECT}/cassandra:${VERSION}
-	gcloud docker -- push ${PROJECT}/cassandra:${VERSION}-dev
+#push: build
+#	gcloud docker -- push ${PROJECT}/dsx0-cassandra:${VERSION}
+#	gcloud docker -- push ${PROJECT}/dsx0-cassandra:${VERSION}-dev
 
-.PHONY: all build push
+#orig
+#.PHONY: all build push
+#mine
+.PHONY: all build
+

@@ -38,7 +38,9 @@ ENV CASSANDRA_HOME=/usr/local/apache-cassandra-${CASSANDRA_VERSION} \
 
 ADD files /
 
-RUN clean-install bash \
+RUN clean-install bash dos2unix \
+    && dos2unix /build.sh \
+    && dos2unix /run.sh \
     && /build.sh \
     && rm /build.sh
 
