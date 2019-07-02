@@ -17,7 +17,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 /* Start of preamble from import "C" comments.  */
 
 
-#line 3 "/home/aledbf/go/src/k8s.io/examples/cassandra/go/main.go"
+#line 3 "/home/ds/Desktop/ent/git/examples/cassandra/go/main.go"
  #include <stdio.h>
  #include <stdlib.h>
 
